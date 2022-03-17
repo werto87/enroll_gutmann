@@ -1,14 +1,7 @@
 [requires]
 catch2/2.13.7
 boost/1.78.0
-sml/1.1.4
 confu_json/0.0.8@werto87/stable
-range-v3/0.12.0@werto87/stable
-pipes/1.0.0
-date/3.0.1
-spdlog/1.9.2
-logr/0.3.0
-fmt/8.1.1
 certify/cci.20201114
 corrade/2020.06
 [generators]
@@ -17,4 +10,3 @@ cmake
 catch2:with_main=True
 catch2:with_benchmark=True
 boost:header_only=True
-# *:shared=True

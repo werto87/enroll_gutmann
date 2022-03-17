@@ -3,7 +3,6 @@ project(project VERSION 1.0.0
   DESCRIPTION project
   LANGUAGES CXX
   ) 
-cmake_policy(SET CMP0015 NEW)
 include(cmake/Cache.cmake)
 set(PROJECT_WARNINGS project_warning)
 add_library(${PROJECT_WARNINGS} INTERFACE)
@@ -30,22 +29,15 @@ target_link_libraries(${TARGET_NAME_LIB} PUBLIC
 ${PROJECT_WARNINGS}
 ${PROJECT_OPTIONS}
   CONAN_PKG::boost
-  CONAN_PKG::range-v3
-  CONAN_PKG::sml
-  CONAN_PKG::pipes
   CONAN_PKG::confu_json
-  CONAN_PKG::date
-  CONAN_PKG::logr
-  CONAN_PKG::fmt
   CONAN_PKG::certify
   CONAN_PKG::corrade
 )
-target_compile_definitions(${TARGET_NAME_LIB} PUBLIC "$<$<CONFIG:DEBUG>:DEBUG>")
-target_compile_definitions(${TARGET_NAME_LIB} PUBLIC 
-_LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS
-# BOOST_ASIO_DISABLE_AWAITABLE_FRAME_RECYCLING
-# BOOST_ASIO_ENABLE_HANDLER_TRACKING
+target_compile_definitions(${TARGET_NAME_LIB} PUBLIC
+  "$<$<CONFIG:DEBUG>:DEBUG>"
+  _LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS
 )
+
 OPTION(BUILD_TESTS "enable tests" OFF)
 IF(BUILD_TESTS)
     enable_testing()
@@ -60,10 +52,5 @@ target_link_libraries(${TARGET_NAME} PUBLIC
 )
 
 target_compile_definitions(${TARGET_NAME} PRIVATE
-#  "$<$<CONFIG:DEBUG>:DEBUG>"
-#  _LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS
-LOG_CO_SPAWN_PRINT_EXCEPTIONS
-# LOG_FOR_STATE_MACHINE
-# LOG_MY_WEBSOCKET
-# BOOST_ASIO_ENABLE_HANDLER_TRACKING
+  LOG_CO_SPAWN_PRINT_EXCEPTIONS
 )

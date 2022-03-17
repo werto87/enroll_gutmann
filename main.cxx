@@ -33,8 +33,6 @@
 #include <iostream>
 #include <string>
 
-// TODO create a repo for this
-// TODO compile it to arm and put it on the raspberry
 // TODO make a systemd service for this and run it
 
 int
